@@ -14,7 +14,7 @@ int main(void)
 	t.tv_sec = -1;
 	t.tv_nsec = -1;
 	printf("BEFORE SYSCALL: Current Time =  %ld seconds and %ld nanoseconds \n", t.tv_sec, t.tv_nsec); 
-	int ret = syscall(__NR_sys_my_xtime, t);
+	int ret = syscall(__NR_sys_my_xtime, &t);
 	printf("AFTER SYSCALL: Current Time =  %ld seconds and %ld nanoseconds \n", t.tv_sec, t.tv_nsec); 
 	printf("ret=%d errno=%d \n",ret,errno);
 
