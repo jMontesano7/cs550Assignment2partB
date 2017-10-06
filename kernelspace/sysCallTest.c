@@ -14,9 +14,11 @@ int __init init_module()
 
 asmlinkage int sys_my_xtime(struct timespec *current_time)
 {
-	printk(KERN_ALERT "my_xtime:Oh great job calling the system call boooop!\n");
+	printk(KERN_ALERT "my_xtime:Oh great job calling the system call!\n");
 	return -EFAULT;
 }
+
+EXPORT_SYMBOL(sys_my_xtime);
 
 
 
