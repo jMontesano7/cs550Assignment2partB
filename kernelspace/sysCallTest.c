@@ -23,11 +23,13 @@ asmlinkage int sys_my_xtime(struct timespec *current_time)
 
 	if(copy_from_user(&buff, current_time, sizeof(buff)))
 	{
+		printk(KERN_ALERT "my_xtime: COPY FROM USER FAILURE!\n");
 		return -EFAULT;
 	}
 	buff = current_kernel_time();
 	if(copy_to_user(current_time, &buff, sizeof(buff)))
 	{
+		printk(KERN_ALERT "my_xtime: COPY TO USER FAILURE!\n");
 		return -EFAULT;
 	}
 	return 0;
